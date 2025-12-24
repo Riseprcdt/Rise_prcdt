@@ -3,312 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <title>Rise Production - Official Site</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,800&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Raleway', sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Raleway',sans-serif}
+html,body{background:#0b0e14;color:#fff;scroll-behavior:smooth}
+
+/* Background */
+.bg{position:fixed;inset:0;background:url('1026345.jpg') center/cover no-repeat;z-index:-2}
+.ov{position:fixed;inset:0;background:linear-gradient(180deg,rgba(5,8,18,.75),rgba(5,8,18,.95));z-index:-1}
+
+/* Language banner */
+.lang{position:fixed;top:0;width:100%;height:44px;
+display:flex;justify-content:flex-end;align-items:center;
+padding:0 24px;z-index:100;background:rgba(0,0,0,.35);
+backdrop-filter:blur(8px)}
+.lang span{margin-left:18px;cursor:pointer;opacity:.7;transition:.3s}
+.lang span:hover{opacity:1}
+
+/* Header */
+.hero{padding-top:150px;text-align:center}
+.hero img{width:260px;margin-bottom:26px}
+.hero p{opacity:.85;line-height:1.7}
+.btns{margin-top:36px}
+.btn{
+display:inline-block;margin:10px 14px;padding:14px 36px;
+border-radius:30px;border:1px solid rgba(255,255,255,.25);
+cursor:pointer;transition:.35s
 }
+.btn:hover{background:#fff;color:#000;transform:translateY(-3px)}
+.btn:active{transform:scale(.96)}
 
-body {
-  background: #0e0e0e;
-  color: white;
-  overflow-x: hidden;
+/* Sections */
+.section{padding:120px 8%;text-align:center}
+.center{max-width:1100px;margin:auto}
+
+/* Feature boxes */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:42px}
+.feature{
+padding:42px;border-radius:20px;
+background:rgba(255,255,255,.035);
+backdrop-filter:blur(14px);
+transition:.4s
 }
+.feature:hover{background:rgba(255,255,255,.08)}
+.feature h3{font-size:20px;font-weight:800;margin-bottom:16px}
+.feature p{opacity:.75;line-height:1.6}
 
-/* ================= LANGUAGE ================= */
-.lang-banner {
-  position: fixed;
-  top: 20px;
-  right: 30px;
-  z-index: 9999;
-  font-size: 14px;
-}
+/* Animations */
+.fade{opacity:0;transform:translateY(40px);transition:1s}
+.fade.show{opacity:1;transform:none}
 
-.lang-btn {
-  margin-left: 16px;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: 0.2s;
-}
-
-.lang-btn.active,
-.lang-btn:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
-
-/* ================= BACKGROUND ================= */
-.background {
-  position: fixed;
-  inset: 0;
-  background: url("background.jpg") center / cover no-repeat;
-  z-index: -3;
-}
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  z-index: -2;
-}
-
-/* ================= HERO ================= */
-.prehead {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header-block {
-  text-align: center;
-  max-width: 900px;
-}
-
-.header-block img {
-  width: 260px;
-  margin-bottom: 30px;
-}
-
-.header-btns {
-  margin-top: 30px;
-}
-
-/* ================= BUTTON ================= */
-.button {
-  display: inline-block;
-  margin: 10px;
-  padding: 14px 34px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.02);
-  color: white;
-  cursor: pointer;
-
-  transition:
-    background 0.35s ease,
-    border 0.35s ease,
-    transform 0.25s ease,
-    box-shadow 0.35s ease;
-}
-
-.button:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.6);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-
-.button:active {
-  transform: translateY(0);
-}
-
-/* ================= SECTIONS ================= */
-.block {
-  padding: 120px 20px;
-  text-align: center;
-}
-
-.center {
-  max-width: 900px;
-  margin: auto;
-}
-
-.facts {
-  display: flex;
-  justify-content: center;
-  gap: 36px;
-  flex-wrap: wrap;
-}
-
-/* ================= FEATURE BOX ================= */
-.fact {
-  max-width: 260px;
-  padding: 30px 26px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(6px);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.03),
-    0 8px 30px rgba(0,0,0,0.25);
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.fact:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,0.06);
-}
-
-.fact .title {
-  font-weight: 700;
-  margin-bottom: 10px;
-  opacity: 0.9;
-}
-
-.fact p {
-  font-size: 14px;
-  line-height: 1.6;
-  opacity: 0.7;
-}
-
-/* ================= SCROLL ANIMATIONS ================= */
-.fade-up,
-.fade-left,
-.fade-right {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-
-.fade-left { transform: translateX(-50px); }
-.fade-right { transform: translateX(50px); }
-
-.show {
-  opacity: 1;
-  transform: translate(0,0);
-}
-
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.25s; }
-.stagger-3 { transition-delay: 0.4s; }
-
-/* ================= HERO INTRO ================= */
-.hero-fade {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: heroFade 1.2s ease forwards;
-}
-
-@keyframes heroFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ================= FOOTER ================= */
-.footer {
-  padding: 40px;
-  opacity: 0.6;
-  font-size: 14px;
-  text-align: center;
-}
-
-/* ================= NOISE ================= */
-.noise-overlay {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44IiBudW1PY3RhdmVzPSI0Ii8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbHRlcj0idXJsKCNuKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==");
-  opacity: 0.12;
-  mix-blend-mode: overlay;
-  animation: noiseShift 8s steps(1) infinite;
-}
-
-@keyframes noiseShift {
-  0% { transform: translate(0,0); }
-  50% { transform: translate(-1%,1%); }
-  100% { transform: translate(0,0); }
-}
+/* Footer */
+.footer{padding:70px 20px;text-align:center;opacity:.6;font-size:14px}
 </style>
 </head>
 
 <body>
+<div class="bg"></div><div class="ov"></div>
 
-<div class="lang-banner">
-  <span class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</span>
-  <span class="lang-btn" data-lang="jp" onclick="setLang('jp')">JP</span>
+<!-- Language -->
+<div class="lang">
+  <span onclick="setLang('en')">EN</span>
+  <span onclick="setLang('jp')">JP</span>
 </div>
 
-<div class="background"></div>
-<div class="overlay"></div>
+<!-- Hero -->
+<div class="hero fade">
+  <img src="r-removebg-preview.png" alt="Rise Production">
+  <p data-i18n="header">
+    Rise Productions:<br>
+    We code useful software for streamers and gamers.<br>
+    Check our projects now.
+  </p>
+  <div class="btns">
+    <div class="btn" data-i18n="b1">Explore Projects</div>
+    <div class="btn" data-i18n="b2">Learn More</div>
+  </div>
+</div>
 
-<div class="prehead">
-  <div class="header-block hero-fade">
-    <img src="rise-logo.png" alt="Rise Production">
-
-    <p data-en="Rise Production<br>We code useful software for streamers and gamers."
-       data-jp="Rise Production<br>配信者とゲーマーのための実用的なソフトウェアを開発しています。"></p>
-
-    <div class="header-btns">
-      <div class="button fade-up" data-en="View Projects" data-jp="プロジェクトを見る"></div>
-      <div class="button fade-up" data-en="Learn More" data-jp="詳しく見る"></div>
+<!-- Features -->
+<div class="section fade">
+  <div class="features">
+    <div class="feature">
+      <h3 data-i18n="f1t">Powerful features</h3>
+      <p data-i18n="f1d">FPS optimization, latency reduction, broadcast utilities and more.</p>
+    </div>
+    <div class="feature">
+      <h3 data-i18n="f2t">Exclusive features</h3>
+      <p data-i18n="f2d">Stability-focused features built for real usage.</p>
+    </div>
+    <div class="feature">
+      <h3 data-i18n="f3t">Any work environment</h3>
+      <p data-i18n="f3d">Windows, macOS and Linux supported equally.</p>
     </div>
   </div>
 </div>
 
-<div class="block">
-  <div class="facts">
-    <div class="fact fade-up stagger-1">
-      <div class="title" data-en="Powerful & Practical" data-jp="強力で実用的"></div>
-      <p data-en="FPS boosters, latency optimizers, and broadcast tools."
-         data-jp="FPSブースター、遅延最適化、配信ツール。"></p>
-    </div>
+<!-- Content sections -->
+<div class="section fade"><div class="center">
+<h1 data-i18n="ui">Breakthrough user interfaces</h1>
+<p data-i18n="uid">Performance and design are carefully balanced.</p>
+</div></div>
 
-    <div class="fact fade-up stagger-2">
-      <div class="title" data-en="Exclusive Features" data-jp="独自機能"></div>
-      <p data-en="Designed for stability, performance, and safety."
-         data-jp="安定性・性能・安全性を重視した設計。"></p>
-    </div>
+<div class="section fade"><div class="center">
+<h1 data-i18n="real">Designed for real-world usage</h1>
+<p data-i18n="reald">Built around real streamer and gamer workflows.</p>
+</div></div>
 
-    <div class="fact fade-up stagger-3">
-      <div class="title" data-en="Any Environment" data-jp="あらゆる環境"></div>
-      <p data-en="Works perfectly on Windows, macOS, and Linux."
-         data-jp="Windows、macOS、Linuxに完全対応。"></p>
-    </div>
-  </div>
+<div class="section fade"><div class="center">
+<h1 data-i18n="creator">Built for creators</h1>
+<p data-i18n="creatord">Tools that enhance creative performance.</p>
+</div></div>
+
+<div class="section fade"><div class="center">
+<h1 data-i18n="cross">Cross-platform compatibility</h1>
+<p data-i18n="crossd">Clean operation across all systems.</p>
+</div></div>
+
+<div class="section fade"><div class="center">
+<h1 data-i18n="system">System-level optimization</h1>
+<p data-i18n="systemd">Stable performance under heavy workloads.</p>
+</div></div>
+
+<div class="section fade"><div class="center">
+<h1 data-i18n="community">Growing with the community</h1>
+<p data-i18n="communityd">Feedback-driven continuous improvement.</p>
+</div></div>
+
+<div class="footer fade">
+© 2025 Rise Production. All Rights Reserved.
 </div>
-
-<div class="footer">
-  <p data-en="© 2025 Rise Production. All Rights Reserved."
-     data-jp="© 2025 Rise Production. All rights reserved."></p>
-</div>
-
-<div class="noise-overlay"></div>
 
 <script>
-/* LANGUAGE */
-function getLangFromURL() {
-  return new URLSearchParams(location.search).get("lang");
+/* Language */
+const t={
+en:{
+header:"Rise Productions:<br>We code useful software for streamers and gamers.<br>Check our projects now.",
+b1:"Explore Projects",b2:"Learn More",
+f1t:"Powerful features",f1d:"FPS optimization, latency reduction, broadcast utilities and more.",
+f2t:"Exclusive features",f2d:"Stability-focused features built for real usage.",
+f3t:"Any work environment",f3d:"Windows, macOS and Linux supported equally.",
+ui:"Breakthrough user interfaces",uid:"Performance and design are carefully balanced.",
+real:"Designed for real-world usage",reald:"Built around real streamer and gamer workflows.",
+creator:"Built for creators",creatord:"Tools that enhance creative performance.",
+cross:"Cross-platform compatibility",crossd:"Clean operation across all systems.",
+system:"System-level optimization",systemd:"Stable performance under heavy workloads.",
+community:"Growing with the community",communityd:"Feedback-driven continuous improvement."
+},
+jp:{
+header:"Rise Production：<br>配信者とゲーマーのための実用的なソフトウェアを開発しています。",
+b1:"プロジェクトを見る",b2:"詳細を見る",
+f1t:"強力な機能",f1d:"FPS最適化、遅延削減、配信支援ツールなど。",
+f2t:"専用機能",f2d:"実用性と安定性を重視。",
+f3t:"あらゆる環境",f3d:"Windows / macOS / Linux 対応。",
+ui:"革新的なUI",uid:"性能とデザインの両立。",
+real:"実用性重視",reald:"実際の使用環境を想定。",
+creator:"クリエイター向け",creatord:"制作効率を高めるツール。",
+cross:"クロスプラットフォーム",crossd:"OSを問わず快適。",
+system:"最適化設計",systemd:"高負荷でも安定。",
+community:"コミュニティと成長",communityd:"ユーザーと共に進化。"
+}
+};
+
+function setLang(l){
+history.replaceState(null,"","?lang="+l);
+document.querySelectorAll("[data-i18n]").forEach(e=>{
+e.innerHTML=t[l][e.dataset.i18n];
+});
 }
 
-function setLang(lang, updateURL = true) {
-  document.querySelectorAll("[data-en]").forEach(el => {
-    el.innerHTML = el.getAttribute("data-" + lang);
-  });
+/* Scroll animation */
+const io=new IntersectionObserver(es=>{
+es.forEach(e=>e.isIntersecting&&e.target.classList.add("show"))
+},{threshold:.2});
+document.querySelectorAll(".fade").forEach(el=>io.observe(el));
 
-  document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
-  document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add("active");
-
-  if (updateURL) {
-    const url = new URL(location);
-    url.searchParams.set("lang", lang);
-    history.replaceState({}, "", url);
-  }
-
-  localStorage.setItem("lang", lang);
-}
-
-setLang(getLangFromURL() || localStorage.getItem("lang") || "en", false);
-
-/* SCROLL ANIMATION */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add("show");
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll(".fade-up,.fade-left,.fade-right")
-  .forEach(el => observer.observe(el));
+const p=new URLSearchParams(location.search);
+setLang(p.get("lang")||"en");
 </script>
 
 </body>
