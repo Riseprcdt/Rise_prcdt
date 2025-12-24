@@ -1,185 +1,315 @@
-
 <!DOCTYPE html>
-<html>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,800&amp;display=swap" rel="stylesheet">
-<title>RISE production Offical Web Site</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rise Production - Official Site</title>
 
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,800&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  background: #0e0e0e;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ================= LANGUAGE ================= */
+.lang-banner {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  z-index: 9999;
+  font-size: 14px;
+}
+
+.lang-btn {
+  margin-left: 16px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.2s;
+}
+
+.lang-btn.active,
+.lang-btn:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ================= BACKGROUND ================= */
+.background {
+  position: fixed;
+  inset: 0;
+  background: url("background.jpg") center / cover no-repeat;
+  z-index: -3;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: -2;
+}
+
+/* ================= HERO ================= */
+.prehead {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-block {
+  text-align: center;
+  max-width: 900px;
+}
+
+.header-block img {
+  width: 260px;
+  margin-bottom: 30px;
+}
+
+.header-btns {
+  margin-top: 30px;
+}
+
+/* ================= BUTTON ================= */
+.button {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.02);
+  color: white;
+  cursor: pointer;
+
+  transition:
+    background 0.35s ease,
+    border 0.35s ease,
+    transform 0.25s ease,
+    box-shadow 0.35s ease;
+}
+
+.button:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* ================= SECTIONS ================= */
+.block {
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.center {
+  max-width: 900px;
+  margin: auto;
+}
+
+.facts {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+/* ================= FEATURE BOX ================= */
+.fact {
+  max-width: 260px;
+  padding: 30px 26px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.03),
+    0 8px 30px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.fact:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.06);
+}
+
+.fact .title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.fact p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+/* ================= SCROLL ANIMATIONS ================= */
+.fade-up,
+.fade-left,
+.fade-right {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-left { transform: translateX(-50px); }
+.fade-right { transform: translateX(50px); }
+
+.show {
+  opacity: 1;
+  transform: translate(0,0);
+}
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.25s; }
+.stagger-3 { transition-delay: 0.4s; }
+
+/* ================= HERO INTRO ================= */
+.hero-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFade 1.2s ease forwards;
+}
+
+@keyframes heroFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  padding: 40px;
+  opacity: 0.6;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ================= NOISE ================= */
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44IiBudW1PY3RhdmVzPSI0Ii8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbHRlcj0idXJsKCNuKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==");
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  animation: noiseShift 8s steps(1) infinite;
+}
+
+@keyframes noiseShift {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-1%,1%); }
+  100% { transform: translate(0,0); }
+}
+</style>
 </head>
-<div class="background">
-<div class="overlay">
-<div id="particles-js"></div>
-</div>
-</div>
-<div class="prehead">
-<div class="header-block" id="header">
-<img src="images/logo.png" width="308" height="72" alt="Rise Logo"> 
-<p>We make and code usefull softwares</br>For gamers, artists, and streaemrs <b>to make convenient.</b></br></br>java~c++</p>
-<div class="header-btns">
-<a href="#download"><div class="button">See Projects</div></a>
-<a href="#facts"><div class="button">Learn more</div></a>
-</div>
-</div>
-</div>
-<div class="preview" id="prev">
-<img src="images/prev.jpg">
-</div>
-<div class="block" id="facts">
-<div class="facts">
-<div class="fact">
-<div class="icon" style="background-image: url('images/icon1.png')"></div>
-<div class="title">Powerful modules</div>
-<div class="desc">Sigma comes packed with tons of essential and powerful minecraft modules</div>
-</div>
-<div class="fact">
-<div class="icon" style="background-image: url('images/icon2.png')"></div>
-<div class="title">Exclusive bypasses</div>
-<div class="desc">Sigma is an actively developped client which gets regular updates to bypass the latest anticheats</div>
-</div>
-<div class="fact">
-<div class="icon" style="background-image: url('images/icon3.png')"></div>
-<div class="title">Play on any version</div>
-<div class="desc">Thanks to Jello Portal, connect to any minecraft server from 1.8 to 1.16 without even relaunching </div>
-</div>
-</div>
-</div>
-<div class="block">
-<div class="center">
-<h1>Breakthrough user interfaces</h1>
-<p>Every guis and sub menus in Jello for Sigma are designed and carefully thought out for an amazing experience.</p>
-<img src="images/interfaces.jpg" class="enterscroll">
-</div>
-</div>
-<div class="banner leak">
-<div class="block">
-<div class="content">
-<div>
-<h1>Server Bypasses</h1><br>
-<p>Sigma 5.0 is designed to bypass a whole lot of anticheats<br> with exclusive NCP, AAC, Spartan &amp; other bypasses</p>
-<p>Server bypasses for Hypixel, Cubecraft, Mineplex and more.</p>
-</div>
-</div>
-<div class="skin"></div>
-</div>
-</div>
-<div class="block">
-<div class="center">
-<h1>King of Media</h1>
-<p>With Jello Music, feel your music. Jello for Sigma comes with a fully fledged music player</p>
-<img src="images/music.jpg" class="enterscroll">
-</div>
-</div>
-<div class="banner thomas">
-<div class="block">
-<div class="content">
-<div>
-<h1>Connect to any server</h1><br>
-<p>With Jello Portal, connect to <b>1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16</b><br> without relaunching your game</p>
-<p>Jello Portal is available in Sigma Classic &amp; Jello for Sigma</p>
-</div>
-</div>
-<div class="skin"></div>
-</div>
-</div>
-<div class="block">
-<div class="center">
-<h1>Exceeds your expectations</h1>
-<p>Although compatible with <b>Windows</b> and <b>Linux</b>, Jello for Sigma is deeply integrated into <b>macOS</b> more than ever, introducing Touchbar and Retina support. </p>
-<img src="images/macos.jpg" class="enterscroll">
-</div>
-</div>
-<div class="banner ilan">
-<div class="block">
-<div class="content">
-<div>
-<h1>Join the community</h1><br>
-<p>Talk to people within the client thanks to Agora. (Coming soon)</p>
-<p>Also join the reddit <a href="https://www.reddit.com/r/SigmaClient/" target="_blank">here!</a></p>
-</div>
-</div>
-<div class="skin"></div>
-</div>
-</div>
-<div class="block">
-<div class="center">
-<h1>Use Classic or Jello.</h1>
-<p>Feeling nostalgic? Sigma 5.0 allows you to boot up in classic mode so that you can experience Sigma 4.0 again.</p>
-<img src="images/switch.jpg" class="enterscroll">
-</div>
-</div>
-<div id="download"></div>
-<div class="block">
-<div class="center">
-<h1>Download</h1>
-<p>Current Version: 5.0.0 (Auto Updates)</p>
-<p class="smaller">sha: f2ed6c750bfbb806d3cdc4ee239b74ed82ba9739</p>
-</br>
-<div class="dl">
-<a onclick="plausible('download');" href="Sigma5.zip" style="text-decoration: none;">
-<div class="inner" style="color: white;">
-<div class="btntitle">Beta Free Download</div>
-<div class="btndesc">1.16 1.15 1.14 1.13 1.12 1.11 1.10 1.9 1.8</b></div>
-</div>
-</a>
-</div>
-</div>
-<div class="premiumblock">
-<div class="left">
-<div class="gem">Premium</div>
-<p>
-Access exclusive bypasses and mods.</br>
-Support developpement and future updates.</br>
-The best client, even better.
-</p>
-</div>
-<div class="right">
-<div class="buy">
-<div class="btntitle">Buy</div>
 
-<a href="https://discord.gg/y7k5eBgC6a" target="_blank" style="text-decoration: none;"><div class="btndesc" style="color:#631f65;">19.99&euro; / <b>For life</b></div></a>
+<body>
+
+<div class="lang-banner">
+  <span class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</span>
+  <span class="lang-btn" data-lang="jp" onclick="setLang('jp')">JP</span>
 </div>
+
+<div class="background"></div>
+<div class="overlay"></div>
+
+<div class="prehead">
+  <div class="header-block hero-fade">
+    <img src="rise-logo.png" alt="Rise Production">
+
+    <p data-en="Rise Production<br>We code useful software for streamers and gamers."
+       data-jp="Rise Production<br>配信者とゲーマーのための実用的なソフトウェアを開発しています。"></p>
+
+    <div class="header-btns">
+      <div class="button fade-up" data-en="View Projects" data-jp="プロジェクトを見る"></div>
+      <div class="button fade-up" data-en="Learn More" data-jp="詳しく見る"></div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
 <div class="block">
-<div class="center">
-<h1>Installation kept simple.</h1>
-<img src="images/installwindows.jpg" id="installimg" class="enterscroll">
-<script>
-        if(navigator.platform.indexOf('Mac') > -1){
-          document.getElementById("installimg").src="images/installmacos.jpg";
-        }
-      </script>
+  <div class="facts">
+    <div class="fact fade-up stagger-1">
+      <div class="title" data-en="Powerful & Practical" data-jp="強力で実用的"></div>
+      <p data-en="FPS boosters, latency optimizers, and broadcast tools."
+         data-jp="FPSブースター、遅延最適化、配信ツール。"></p>
+    </div>
+
+    <div class="fact fade-up stagger-2">
+      <div class="title" data-en="Exclusive Features" data-jp="独自機能"></div>
+      <p data-en="Designed for stability, performance, and safety."
+         data-jp="安定性・性能・安全性を重視した設計。"></p>
+    </div>
+
+    <div class="fact fade-up stagger-3">
+      <div class="title" data-en="Any Environment" data-jp="あらゆる環境"></div>
+      <p data-en="Works perfectly on Windows, macOS, and Linux."
+         data-jp="Windows、macOS、Linuxに完全対応。"></p>
+    </div>
+  </div>
 </div>
-</div>
-<div class="block">
-<div class="center">
-<h1>Videos and Reviews</h1>
-<p>Check out these awesome videos and animations.</p>
-</br></br></br></br>
-<iframe class="youtube" height="296" src="https://www.youtube.com/embed/dBixUF-9-Pg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe class="youtube" height="296" src="https://www.youtube.com/embed/dwTlcgW6dDA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe class="youtube" height="296" src="https://www.youtube.com/embed/TM2xX3zN6eo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe class="youtube" height="296" src="https://www.youtube.com/embed/QA0blHmS7Yc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-</div>
+
 <div class="footer">
-<div class="sigmaprod"></div>
-<p>Copyright &copy; 2025 by Sigma Production. All Rights Reserved.</p>
+  <p data-en="© 2025 Rise Production. All Rights Reserved."
+     data-jp="© 2025 Rise Production. All rights reserved."></p>
 </div>
-<div class="modalinit">
-<div class="modal-block">
-<h1>Looking for more?</h1>
-<img width="100%" height="209" src="images/Wonderland Central HD.webp" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></img>
-<p class="modaltext">If you're looking for more clients, check out <a href="https://wonderlandlibrary.github.io" target="_blank" class="wonderland">Wonderland Central</a>, a website housing our own featured clients for modern anticheats, an archive of 1500+ modern and historical clients, and various tools for both cheaters and client developers.</p>
-<div class="modal-button" onclick="closeModals()">Close</div>
-</div>
-</div>
-</body>
-<script src="scripts/particles.min.js"></script>
+
+<div class="noise-overlay"></div>
+
 <script>
-  particlesJS("particles-js", {"particles":{"number":{"value":69,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":3.7000000000000006},"image":{"src":"","width":250,"height":200}},"opacity":{"value":0.07215332581736189,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":10,"random":true,"anim":{"enable":false,"speed":63,"size_min":0.4700000000000001,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":1.6,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"window","events":{"onhover":{"enable":false,"mode":"repulse"},"onclick":{"enable":false,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":89.32876538510341,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+/* LANGUAGE */
+function getLangFromURL() {
+  return new URLSearchParams(location.search).get("lang");
+}
+
+function setLang(lang, updateURL = true) {
+  document.querySelectorAll("[data-en]").forEach(el => {
+    el.innerHTML = el.getAttribute("data-" + lang);
+  });
+
+  document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
+  document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add("active");
+
+  if (updateURL) {
+    const url = new URL(location);
+    url.searchParams.set("lang", lang);
+    history.replaceState({}, "", url);
+  }
+
+  localStorage.setItem("lang", lang);
+}
+
+setLang(getLangFromURL() || localStorage.getItem("lang") || "en", false);
+
+/* SCROLL ANIMATION */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add("show");
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(".fade-up,.fade-left,.fade-right")
+  .forEach(el => observer.observe(el));
 </script>
-<script src="scripts/smooth-scroll.js"></script>
-<script src="scripts/script.js"></script>
+
+</body>
 </html>
