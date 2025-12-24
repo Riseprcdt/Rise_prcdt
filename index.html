@@ -16,23 +16,15 @@ html,body{
   scroll-behavior:smooth;
 }
 
-/* ===== GLOBAL BACKGROUND ===== */
+/* ===== GLOBAL BACKGROUND (NO DARK OVERLAY) ===== */
 .background{
   position:fixed;
   inset:0;
   background:url('background.jpg') center / cover no-repeat;
-  z-index:-3;
-}
-.overlay{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at top, rgba(30,35,60,.45), rgba(10,12,20,.9)),
-    linear-gradient(180deg, rgba(10,12,20,.4), rgba(5,6,10,.95));
   z-index:-2;
 }
 
-/* ===== LANGUAGE BAR (ONLY DISTINCT UI) ===== */
+/* ===== LANGUAGE BAR (ONLY DARK AREA) ===== */
 .lang-bar{
   position:fixed;
   top:0;
@@ -54,7 +46,7 @@ html,body{
 }
 .lang-bar span:hover{opacity:1}
 
-/* ===== HERO (NO BACKGROUND AT ALL) ===== */
+/* ===== HERO ===== */
 .hero{
   padding-top:160px;
   padding-bottom:140px;
@@ -64,11 +56,11 @@ html,body{
   width:260px;
   max-width:80%;
   margin-bottom:32px;
-  filter:drop-shadow(0 18px 40px rgba(0,0,0,.8));
+  filter:drop-shadow(0 18px 40px rgba(0,0,0,.6));
 }
 .hero p{
   line-height:1.75;
-  opacity:.92;
+  text-shadow:0 2px 8px rgba(0,0,0,.45);
 }
 
 /* ===== BUTTONS ===== */
@@ -78,10 +70,11 @@ html,body{
   margin:10px 16px;
   padding:14px 42px;
   border-radius:30px;
-  border:1px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.4);
+  background:rgba(255,255,255,.08);
   cursor:pointer;
   transition:.35s;
+  backdrop-filter:blur(6px);
 }
 .btn:hover{
   background:#fff;
@@ -100,7 +93,7 @@ html,body{
   margin:auto;
 }
 
-/* ===== FEATURE BOXES (BLENDED) ===== */
+/* ===== FEATURE BOXES (VERY BLENDED) ===== */
 .features{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -109,14 +102,13 @@ html,body{
 .feature{
   padding:44px 36px;
   border-radius:26px;
-  background:rgba(255,255,255,.02);
-  border:1px solid rgba(255,255,255,.05);
-  backdrop-filter:blur(18px);
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(12px);
   transition:.5s ease;
 }
 .feature:hover{
-  background:rgba(255,255,255,.07);
-  border-color:rgba(255,255,255,.15);
+  background:rgba(255,255,255,.14);
 }
 .feature h3{
   font-size:20px;
@@ -124,7 +116,7 @@ html,body{
   margin-bottom:18px;
 }
 .feature p{
-  opacity:.72;
+  opacity:.85;
   line-height:1.65;
 }
 
@@ -143,8 +135,9 @@ html,body{
 .footer{
   padding:110px 20px;
   text-align:center;
-  opacity:.55;
+  opacity:.7;
   font-size:14px;
+  text-shadow:0 2px 6px rgba(0,0,0,.4);
 }
 </style>
 </head>
@@ -152,7 +145,6 @@ html,body{
 <body>
 
 <div class="background"></div>
-<div class="overlay"></div>
 
 <!-- LANGUAGE BAR -->
 <div class="lang-bar">
@@ -180,23 +172,20 @@ html,body{
     <div class="feature">
       <h3 data-i18n="f1t">Powerful features</h3>
       <p data-i18n="f1d">
-        Our software is packed with powerful and practical features
-        for streamers and gamers, including FPS boosting,
-        low-latency optimization, and broadcasting tools.
+        Our software is packed with practical tools for streamers and gamers,
+        including FPS optimization and broadcast utilities.
       </p>
     </div>
     <div class="feature">
       <h3 data-i18n="f2t">Exclusive features</h3>
       <p data-i18n="f2d">
-        Carefully engineered systems focused on stability,
-        security, and fair usage.
+        Stable, secure, and fairly designed systems you can trust.
       </p>
     </div>
     <div class="feature">
       <h3 data-i18n="f3t">Any work environment</h3>
       <p data-i18n="f3d">
-        Fully compatible with Windows, macOS, and Linux —
-        no conflicts, no compromises.
+        Fully compatible with Windows, macOS, and Linux.
       </p>
     </div>
   </div>
@@ -207,8 +196,7 @@ html,body{
   <div class="center">
     <h1 data-i18n="ui">Breakthrough user interfaces</h1>
     <p data-i18n="uid">
-      Our software is not only built for performance.
-      Design and usability are treated as core features.
+      Performance-focused software with clean and modern design.
     </p>
   </div>
 </div>
@@ -217,7 +205,7 @@ html,body{
   <div class="center">
     <h1 data-i18n="community">Growing with the community</h1>
     <p data-i18n="communityd">
-      We build alongside real users, driven by real feedback.
+      Built with feedback from real users.
     </p>
   </div>
 </div>
@@ -232,29 +220,29 @@ en:{
 header:"Rise Productions:<br>We code useful software for streamers and gamers.<br>Check our projects now.",
 b1:"Explore Projects",b2:"Learn More",
 f1t:"Powerful features",
-f1d:"Our software is packed with powerful and practical features for streamers and gamers, including FPS boosting, low-latency optimization, and broadcasting tools.",
+f1d:"Our software is packed with practical tools for streamers and gamers, including FPS optimization and broadcast utilities.",
 f2t:"Exclusive features",
-f2d:"Carefully engineered systems focused on stability, security, and fair usage.",
+f2d:"Stable, secure, and fairly designed systems you can trust.",
 f3t:"Any work environment",
-f3d:"Fully compatible with Windows, macOS, and Linux — no conflicts, no compromises.",
+f3d:"Fully compatible with Windows, macOS, and Linux.",
 ui:"Breakthrough user interfaces",
-uid:"Our software is not only built for performance. Design and usability are treated as core features.",
+uid:"Performance-focused software with clean and modern design.",
 community:"Growing with the community",
-communityd:"We build alongside real users, driven by real feedback."
+communityd:"Built with feedback from real users."
 },
 jp:{
 header:"Rise Production：<br>配信者とゲーマーのための実用的なソフトウェアを開発しています。",
 b1:"プロジェクトを見る",b2:"詳細を見る",
 f1t:"強力な機能",
-f1d:"FPS最適化、低遅延化、配信支援など、実用性を重視した機能を搭載。",
+f1d:"FPS最適化や配信支援など、実用性重視の機能。",
 f2t:"専用機能",
-f2d:"安定性・安全性・公平性を重視した設計。",
+f2d:"安定性と安全性を重視した設計。",
 f3t:"あらゆる環境",
-f3d:"Windows、macOS、Linux 完全対応。",
+f3d:"Windows・macOS・Linux 対応。",
 ui:"革新的なUI",
-uid:"性能とデザインを両立したインターフェース。",
+uid:"性能とデザインを両立。",
 community:"コミュニティと共に成長",
-communityd:"実際のユーザーの声を反映した開発。"
+communityd:"ユーザーの声を反映した開発。"
 }
 };
 
