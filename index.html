@@ -8,35 +8,33 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Raleway',sans-serif}
+
 html,body{
   width:100%;
   height:100%;
   color:#fff;
-  background:#000;
   scroll-behavior:smooth;
 }
 
-/* ===== GLOBAL BACKGROUND (NO DARK OVERLAY) ===== */
-.background{
-  position:fixed;
-  inset:0;
-  background:url('background.jpg') center / cover no-repeat;
-  z-index:-2;
+/* ===== FULL BACKGROUND IMAGE (EVERYWHERE) ===== */
+body{
+  background:url('background.jpg') center / cover no-repeat fixed;
 }
 
-/* ===== LANGUAGE BAR (ONLY DARK AREA) ===== */
+/* ===== TOP LANGUAGE BAR (ONLY DARK AREA) ===== */
 .lang-bar{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
   height:46px;
   display:flex;
   justify-content:flex-end;
   align-items:center;
   padding:0 26px;
-  background:rgba(0,0,0,.45);
+  background:rgba(0,0,0,.55);
   backdrop-filter:blur(10px);
-  z-index:100;
+  z-index:1000;
 }
 .lang-bar span{
   margin-left:18px;
@@ -48,30 +46,31 @@ html,body{
 
 /* ===== HERO ===== */
 .hero{
+  min-height:100vh;
   padding-top:160px;
-  padding-bottom:140px;
+  padding-bottom:120px;
   text-align:center;
 }
 .hero img{
   width:260px;
   max-width:80%;
-  margin-bottom:32px;
-  filter:drop-shadow(0 18px 40px rgba(0,0,0,.6));
+  margin-bottom:34px;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.6));
 }
 .hero p{
   line-height:1.75;
-  text-shadow:0 2px 8px rgba(0,0,0,.45);
+  text-shadow:0 3px 10px rgba(0,0,0,.45);
 }
 
 /* ===== BUTTONS ===== */
-.buttons{margin-top:42px}
+.buttons{margin-top:46px}
 .btn{
   display:inline-block;
-  margin:10px 16px;
-  padding:14px 42px;
-  border-radius:30px;
-  border:1px solid rgba(255,255,255,.4);
-  background:rgba(255,255,255,.08);
+  margin:10px 18px;
+  padding:14px 44px;
+  border-radius:32px;
+  border:1px solid rgba(255,255,255,.45);
+  background:rgba(255,255,255,.1);
   cursor:pointer;
   transition:.35s;
   backdrop-filter:blur(6px);
@@ -93,7 +92,7 @@ html,body{
   margin:auto;
 }
 
-/* ===== FEATURE BOXES (VERY BLENDED) ===== */
+/* ===== FEATURE BOXES (BLENDED WITH BACKGROUND) ===== */
 .features{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -102,13 +101,13 @@ html,body{
 .feature{
   padding:44px 36px;
   border-radius:26px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.15);
-  backdrop-filter:blur(12px);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(14px);
   transition:.5s ease;
 }
 .feature:hover{
-  background:rgba(255,255,255,.14);
+  background:rgba(255,255,255,.16);
 }
 .feature h3{
   font-size:20px;
@@ -116,11 +115,11 @@ html,body{
   margin-bottom:18px;
 }
 .feature p{
-  opacity:.85;
+  opacity:.88;
   line-height:1.65;
 }
 
-/* ===== SCROLL FADE UP ===== */
+/* ===== SCROLL FADE-UP ===== */
 .fade{
   opacity:0;
   transform:translateY(50px);
@@ -133,9 +132,9 @@ html,body{
 
 /* ===== FOOTER ===== */
 .footer{
-  padding:110px 20px;
+  padding:120px 20px;
   text-align:center;
-  opacity:.7;
+  opacity:.75;
   font-size:14px;
   text-shadow:0 2px 6px rgba(0,0,0,.4);
 }
@@ -144,8 +143,6 @@ html,body{
 
 <body>
 
-<div class="background"></div>
-
 <!-- LANGUAGE BAR -->
 <div class="lang-bar">
   <span onclick="setLang('en')">EN</span>
@@ -153,7 +150,7 @@ html,body{
 </div>
 
 <!-- HERO -->
-<div class="hero fade">
+<section class="hero fade">
   <img src="rise-logo.png" alt="Rise Production Logo">
   <p data-i18n="header">
     Rise Productions:<br>
@@ -164,51 +161,45 @@ html,body{
     <div class="btn" data-i18n="b1">Explore Projects</div>
     <div class="btn" data-i18n="b2">Learn More</div>
   </div>
-</div>
+</section>
 
 <!-- FEATURES -->
-<div class="section fade">
+<section class="section fade">
   <div class="features">
     <div class="feature">
       <h3 data-i18n="f1t">Powerful features</h3>
       <p data-i18n="f1d">
-        Our software is packed with practical tools for streamers and gamers,
-        including FPS optimization and broadcast utilities.
+        Practical tools for streamers and gamers, including FPS optimization.
       </p>
     </div>
     <div class="feature">
       <h3 data-i18n="f2t">Exclusive features</h3>
       <p data-i18n="f2d">
-        Stable, secure, and fairly designed systems you can trust.
+        Stable, secure and fairly designed systems.
       </p>
     </div>
     <div class="feature">
       <h3 data-i18n="f3t">Any work environment</h3>
       <p data-i18n="f3d">
-        Fully compatible with Windows, macOS, and Linux.
+        Compatible with Windows, macOS and Linux.
       </p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CONTENT -->
-<div class="section fade">
+<section class="section fade">
   <div class="center">
     <h1 data-i18n="ui">Breakthrough user interfaces</h1>
-    <p data-i18n="uid">
-      Performance-focused software with clean and modern design.
-    </p>
+    <p data-i18n="uid">Performance-focused software with clean design.</p>
   </div>
-</div>
+</section>
 
-<div class="section fade">
+<section class="section fade">
   <div class="center">
     <h1 data-i18n="community">Growing with the community</h1>
-    <p data-i18n="communityd">
-      Built with feedback from real users.
-    </p>
+    <p data-i18n="communityd">Built with real user feedback.</p>
   </div>
-</div>
+</section>
 
 <div class="footer fade">
 © 2025 Rise Production. All Rights Reserved.
@@ -219,30 +210,20 @@ const T={
 en:{
 header:"Rise Productions:<br>We code useful software for streamers and gamers.<br>Check our projects now.",
 b1:"Explore Projects",b2:"Learn More",
-f1t:"Powerful features",
-f1d:"Our software is packed with practical tools for streamers and gamers, including FPS optimization and broadcast utilities.",
-f2t:"Exclusive features",
-f2d:"Stable, secure, and fairly designed systems you can trust.",
-f3t:"Any work environment",
-f3d:"Fully compatible with Windows, macOS, and Linux.",
-ui:"Breakthrough user interfaces",
-uid:"Performance-focused software with clean and modern design.",
-community:"Growing with the community",
-communityd:"Built with feedback from real users."
+f1t:"Powerful features",f1d:"Practical tools for streamers and gamers, including FPS optimization.",
+f2t:"Exclusive features",f2d:"Stable, secure and fairly designed systems.",
+f3t:"Any work environment",f3d:"Compatible with Windows, macOS and Linux.",
+ui:"Breakthrough user interfaces",uid:"Performance-focused software with clean design.",
+community:"Growing with the community",communityd:"Built with real user feedback."
 },
 jp:{
 header:"Rise Production：<br>配信者とゲーマーのための実用的なソフトウェアを開発しています。",
 b1:"プロジェクトを見る",b2:"詳細を見る",
-f1t:"強力な機能",
-f1d:"FPS最適化や配信支援など、実用性重視の機能。",
-f2t:"専用機能",
-f2d:"安定性と安全性を重視した設計。",
-f3t:"あらゆる環境",
-f3d:"Windows・macOS・Linux 対応。",
-ui:"革新的なUI",
-uid:"性能とデザインを両立。",
-community:"コミュニティと共に成長",
-communityd:"ユーザーの声を反映した開発。"
+f1t:"強力な機能",f1d:"FPS最適化など実用的なツール。",
+f2t:"専用機能",f2d:"安定性と安全性を重視。",
+f3t:"あらゆる環境",f3d:"Windows・macOS・Linux対応。",
+ui:"革新的なUI",uid:"性能とデザインを両立。",
+community:"コミュニティと共に成長",communityd:"ユーザーの声を反映。"
 }
 };
 
