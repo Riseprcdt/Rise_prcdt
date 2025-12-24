@@ -16,11 +16,11 @@ html,body{
   scroll-behavior:smooth;
 }
 
-/* ===== ORIGINAL BACKGROUND STYLE ===== */
+/* ===== BACKGROUND ===== */
 .background{
   position:fixed;
   inset:0;
-  background:url('1026345.jpg') center center / cover no-repeat;
+  background:url('background.jpg') center center / cover no-repeat;
   z-index:-3;
 }
 .overlay{
@@ -60,7 +60,7 @@ html,body{
   text-align:center;
 }
 .hero img{
-  width:280px;
+  width:260px;
   max-width:80%;
   margin-bottom:30px;
   filter:drop-shadow(0 10px 30px rgba(0,0,0,.6));
@@ -125,11 +125,11 @@ html,body{
   line-height:1.6;
 }
 
-/* ===== SCROLL ANIMATION ===== */
+/* ===== SCROLL FADE UP ===== */
 .fade{
   opacity:0;
   transform:translateY(46px);
-  transition:1s;
+  transition:1s ease;
 }
 .fade.show{
   opacity:1;
@@ -160,7 +160,7 @@ html,body{
 
 <!-- HERO -->
 <div class="hero fade">
-  <img src="r-removebg-preview.png" alt="Rise Production Logo">
+  <img src="rise-logo.png" alt="Rise Production Logo">
   <p data-i18n="header">
     Rise Productions:<br>
     We code useful software for streamers and gamers.<br>
@@ -177,15 +177,15 @@ html,body{
   <div class="features">
     <div class="feature">
       <h3 data-i18n="f1t">Powerful features</h3>
-      <p data-i18n="f1d">FPS optimization, latency reduction, broadcast utilities and more.</p>
+      <p data-i18n="f1d">Packed with practical tools for performance and streaming.</p>
     </div>
     <div class="feature">
       <h3 data-i18n="f2t">Exclusive features</h3>
-      <p data-i18n="f2d">Stability-focused features built for real usage.</p>
+      <p data-i18n="f2d">Designed for stability and real-world usage.</p>
     </div>
     <div class="feature">
       <h3 data-i18n="f3t">Any work environment</h3>
-      <p data-i18n="f3d">Windows, macOS and Linux supported equally.</p>
+      <p data-i18n="f3d">Windows, macOS and Linux fully supported.</p>
     </div>
   </div>
 </div>
@@ -193,12 +193,12 @@ html,body{
 <!-- CONTENT -->
 <div class="section fade"><div class="center">
 <h1 data-i18n="ui">Breakthrough user interfaces</h1>
-<p data-i18n="uid">Performance and design are carefully balanced.</p>
+<p data-i18n="uid">Our software balances performance with clean, modern design.</p>
 </div></div>
 
 <div class="section fade"><div class="center">
 <h1 data-i18n="community">Growing with the community</h1>
-<p data-i18n="communityd">Feedback-driven continuous improvement.</p>
+<p data-i18n="communityd">Built and refined through real user feedback.</p>
 </div></div>
 
 <!-- FOOTER -->
@@ -211,20 +211,20 @@ const T={
 en:{
 header:"Rise Productions:<br>We code useful software for streamers and gamers.<br>Check our projects now.",
 b1:"Explore Projects",b2:"Learn More",
-f1t:"Powerful features",f1d:"FPS optimization, latency reduction, broadcast utilities and more.",
-f2t:"Exclusive features",f2d:"Stability-focused features built for real usage.",
-f3t:"Any work environment",f3d:"Windows, macOS and Linux supported equally.",
-ui:"Breakthrough user interfaces",uid:"Performance and design are carefully balanced.",
-community:"Growing with the community",communityd:"Feedback-driven continuous improvement."
+f1t:"Powerful features",f1d:"Packed with practical tools for performance and streaming.",
+f2t:"Exclusive features",f2d:"Designed for stability and real-world usage.",
+f3t:"Any work environment",f3d:"Windows, macOS and Linux fully supported.",
+ui:"Breakthrough user interfaces",uid:"Our software balances performance with clean, modern design.",
+community:"Growing with the community",communityd:"Built and refined through real user feedback."
 },
 jp:{
 header:"Rise Production：<br>配信者とゲーマーのための実用的なソフトウェアを開発しています。",
 b1:"プロジェクトを見る",b2:"詳細を見る",
-f1t:"強力な機能",f1d:"FPS最적화、遅延削減、配信支援ツールなど。",
-f2t:"専用機能",f2d:"実用性と安定性を重視。",
-f3t:"あらゆる環境",f3d:"Windows / macOS / Linux 対応。",
+f1t:"強力な機能",f1d:"パフォーマンスと配信向けの実用的な機能。",
+f2t:"専用機能",f2d:"安定性と実用性を重視。",
+f3t:"あらゆる環境",f3d:"Windows・macOS・Linux 対応。",
 ui:"革新的なUI",uid:"性能とデザインの両立。",
-community:"コミュニティと成長",communityd:"ユーザーと共に進化。"
+community:"コミュニティと共に成長",communityd:"ユーザーの声を反映。"
 }
 };
 
@@ -235,9 +235,12 @@ function setLang(l){
   });
 }
 
-const io=new IntersectionObserver(es=>{
-  es.forEach(e=>e.isIntersecting&&e.target.classList.add("show"))
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
 },{threshold:.2});
+
 document.querySelectorAll(".fade").forEach(el=>io.observe(el));
 
 const p=new URLSearchParams(location.search);
