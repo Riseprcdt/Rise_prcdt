@@ -12,12 +12,13 @@ body {
   background: url('./background.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #ffffff;
+  overflow-x: hidden;
 }
 
 /* ===== 상단 바 ===== */
 .top-bar {
   background: #000000;
-  padding: 12px 40px;
+  padding: 14px 50px;
   text-align: right;
   font-size: 14px;
   letter-spacing: 1px;
@@ -26,93 +27,118 @@ body {
 .top-bar a {
   color: #ffffff;
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 25px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.top-bar a:hover {
+  opacity: 1;
 }
 
 /* ===== 로고 ===== */
 .logo-section {
   text-align: center;
-  padding: 100px 20px 40px;
+  padding: 120px 20px 50px;
 }
 
 .logo-section img {
-  width: 220px;
+  width: 230px;
+  filter: drop-shadow(0 0 25px rgba(255,255,255,0.25));
 }
 
-/* ===== 메인 텍스트 ===== */
+/* ===== 메인 ===== */
 .hero {
   text-align: center;
   padding: 20px;
 }
 
 .hero h1 {
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
 .hero p {
-  margin: 6px 0;
   font-size: 18px;
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
-/* ===== 버튼 (애플 스타일 글래스) ===== */
+/* ===== 버튼 (프리미엄 글래스 + 네온) ===== */
 .buttons {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .btn {
   display: inline-block;
-  padding: 15px 45px;
-  margin: 10px 25px;
-  border-radius: 50px;
+  padding: 16px 50px;
+  margin: 12px 30px;
+  border-radius: 60px;
   color: white;
   text-decoration: none;
   font-weight: 500;
+  letter-spacing: 0.5px;
 
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255,255,255,0.25);
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.4),
+    0 0 20px rgba(0, 150, 255, 0.15);
 
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
 .btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow:
+    0 15px 50px rgba(0,0,0,0.5),
+    0 0 30px rgba(0, 200, 255, 0.4);
 }
 
-/* ===== 3개 박스 (부드러운 글래스 카드) ===== */
+/* ===== 카드 ===== */
 .features {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 50px;
-  padding: 100px 20px;
+  gap: 60px;
+  padding: 120px 20px;
   text-align: center;
 }
 
 .feature-box {
-  width: 300px;
-  padding: 35px;
-  border-radius: 25px;
+  width: 320px;
+  padding: 40px;
+  border-radius: 30px;
 
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.15);
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
-  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 40px rgba(0,150,255,0.1);
+
+  transition: 0.4s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 25px 80px rgba(0,0,0,0.6),
+    0 0 60px rgba(0,200,255,0.25);
 }
 
 .feature-box h3 {
   margin-bottom: 18px;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .feature-box p {
@@ -124,9 +150,9 @@ body {
 /* ===== 푸터 ===== */
 .footer {
   text-align: center;
-  padding: 40px;
+  padding: 50px;
   font-size: 14px;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 </style>
 </head>
@@ -143,9 +169,8 @@ body {
 </section>
 
 <section class="hero">
-  <h1>Rise Productions:</h1>
-  <p>We code useful software for streamers and gamers.</p>
-  <p>Check our projects now.</p>
+  <h1>Rise Productions</h1>
+  <p>Premium software engineered for streamers and gamers.</p>
 
   <div class="buttons">
     <a href="#" class="btn">Explore Projects</a>
@@ -156,17 +181,17 @@ body {
 <section class="features">
   <div class="feature-box">
     <h3>Breakful Userspace</h3>
-    <p>Powerful and optimized environment tools designed for modern gamers and creators.</p>
+    <p>Advanced optimized tools crafted for modern creators.</p>
   </div>
 
   <div class="feature-box">
     <h3>Performance Focused</h3>
-    <p>Lightweight and fast software engineered to run smoothly on any setup.</p>
+    <p>Ultra-lightweight architecture delivering maximum efficiency.</p>
   </div>
 
   <div class="feature-box">
     <h3>Community Driven</h3>
-    <p>Built with feedback from real users to ensure the best possible experience.</p>
+    <p>Built around real user feedback for the best experience.</p>
   </div>
 </section>
 
