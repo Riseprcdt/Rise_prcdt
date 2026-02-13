@@ -2,248 +2,167 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Rise Production - Official Site</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,800&display=swap" rel="stylesheet">
+<title>Rise Productions</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Raleway',sans-serif}
-
-html,body{
-  width:100%;
-  height:100%;
-  color:#fff;
-  scroll-behavior:smooth;
+/* ===== 기본 설정 ===== */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: url('./background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
 }
 
-/* ===== FULL BACKGROUND IMAGE (EVERYWHERE) ===== */
-body{
-  background:url('background.jpg') center / cover no-repeat fixed;
+/* ===== 상단 바 (JP / EN) ===== */
+.top-bar {
+  background: #000000;
+  padding: 10px 30px;
+  text-align: right;
+  font-size: 14px;
 }
 
-/* ===== TOP LANGUAGE BAR (ONLY DARK AREA) ===== */
-.lang-bar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:46px;
-  display:flex;
-  justify-content:flex-end;
-  align-items:center;
-  padding:0 26px;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(10px);
-  z-index:1000;
-}
-.lang-bar span{
-  margin-left:18px;
-  cursor:pointer;
-  opacity:.7;
-  transition:.25s;
-}
-.lang-bar span:hover{opacity:1}
-
-/* ===== HERO ===== */
-.hero{
-  min-height:100vh;
-  padding-top:160px;
-  padding-bottom:120px;
-  text-align:center;
-}
-.hero img{
-  width:260px;
-  max-width:80%;
-  margin-bottom:34px;
-  filter:drop-shadow(0 20px 40px rgba(0,0,0,.6));
-}
-.hero p{
-  line-height:1.75;
-  text-shadow:0 3px 10px rgba(0,0,0,.45);
+.top-bar a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 15px;
 }
 
-/* ===== BUTTONS ===== */
-.buttons{margin-top:46px}
-.btn{
-  display:inline-block;
-  margin:10px 18px;
-  padding:14px 44px;
-  border-radius:32px;
-  border:1px solid rgba(255,255,255,.45);
-  background:rgba(255,255,255,.1);
-  cursor:pointer;
-  transition:.35s;
-  backdrop-filter:blur(6px);
-}
-.btn:hover{
-  background:#fff;
-  color:#000;
-  transform:translateY(-4px);
-}
-.btn:active{transform:scale(.95)}
-
-/* ===== SECTIONS ===== */
-.section{
-  padding:120px 8%;
-  text-align:center;
-}
-.center{
-  max-width:1100px;
-  margin:auto;
+/* ===== 로고 영역 ===== */
+.logo-section {
+  text-align: center;
+  padding: 80px 20px 40px;
 }
 
-/* ===== FEATURE BOXES (BLENDED WITH BACKGROUND) ===== */
-.features{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:56px;
-}
-.feature{
-  padding:44px 36px;
-  border-radius:26px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter:blur(14px);
-  transition:.5s ease;
-}
-.feature:hover{
-  background:rgba(255,255,255,.16);
-}
-.feature h3{
-  font-size:20px;
-  font-weight:800;
-  margin-bottom:18px;
-}
-.feature p{
-  opacity:.88;
-  line-height:1.65;
+.logo-section img {
+  width: 220px;
+  opacity: 0.9;
 }
 
-/* ===== SCROLL FADE-UP ===== */
-.fade{
-  opacity:0;
-  transform:translateY(50px);
-  transition:1.1s ease;
-}
-.fade.show{
-  opacity:1;
-  transform:none;
+/* ===== 히어로 텍스트 ===== */
+.hero {
+  text-align: center;
+  padding: 20px;
 }
 
-/* ===== FOOTER ===== */
-.footer{
-  padding:120px 20px;
-  text-align:center;
-  opacity:.75;
-  font-size:14px;
-  text-shadow:0 2px 6px rgba(0,0,0,.4);
+.hero h1 {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  margin: 5px 0;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* ===== 버튼 ===== */
+.buttons {
+  margin-top: 40px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 40px;
+  margin: 10px 20px;
+  border-radius: 40px;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  text-decoration: none;
+  backdrop-filter: blur(5px);
+  background: rgba(0,0,0,0.25);
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ===== 3개 박스 영역 ===== */
+.features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 80px 20px;
+}
+
+.feature-box {
+  width: 280px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  text-align: center;
+}
+
+.feature-box h3 {
+  margin-bottom: 15px;
+}
+
+.feature-box p {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+/* ===== 푸터 ===== */
+.footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 14px;
+  opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LANGUAGE BAR -->
-<div class="lang-bar">
-  <span onclick="setLang('en')">EN</span>
-  <span onclick="setLang('jp')">JP</span>
+<!-- 상단 바 -->
+<div class="top-bar">
+  <a href="#">EN</a>
+  <a href="#">JP</a>
 </div>
 
-<!-- HERO -->
-<section class="hero fade">
-  <img src="rise-logo.png" alt="Rise Production Logo">
-  <p data-i18n="header">
-    Rise Productions:<br>
-    We code useful software for streamers and gamers.<br>
-    Check our projects now.
-  </p>
+<!-- 로고 -->
+<section class="logo-section">
+  <img src="./rise-logo.png" alt="Rise Logo">
+</section>
+
+<!-- 메인 텍스트 -->
+<section class="hero">
+  <h1>Rise Productions:</h1>
+  <p>We code useful software for streamers and gamers.</p>
+  <p>Check our projects now.</p>
+
   <div class="buttons">
-    <div class="btn" data-i18n="b1">Explore Projects</div>
-    <div class="btn" data-i18n="b2">Learn More</div>
+    <a href="#" class="btn">Explore Projects</a>
+    <a href="#" class="btn">Learn More</a>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="section fade">
-  <div class="features">
-    <div class="feature">
-      <h3 data-i18n="f1t">Powerful features</h3>
-      <p data-i18n="f1d">
-        Practical tools for streamers and gamers, including FPS optimization.
-      </p>
-    </div>
-    <div class="feature">
-      <h3 data-i18n="f2t">Exclusive features</h3>
-      <p data-i18n="f2d">
-        Stable, secure and fairly designed systems.
-      </p>
-    </div>
-    <div class="feature">
-      <h3 data-i18n="f3t">Any work environment</h3>
-      <p data-i18n="f3d">
-        Compatible with Windows, macOS and Linux.
-      </p>
-    </div>
+<!-- 3개 박스 -->
+<section class="features">
+  <div class="feature-box">
+    <h3>Breakful Userspace</h3>
+    <p>Powerful and optimized environment tools designed for modern gamers and creators.</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Performance Focused</h3>
+    <p>Lightweight and fast software engineered to run smoothly on any setup.</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Community Driven</h3>
+    <p>Built with feedback from real users to ensure the best possible experience.</p>
   </div>
 </section>
 
-<section class="section fade">
-  <div class="center">
-    <h1 data-i18n="ui">Breakthrough user interfaces</h1>
-    <p data-i18n="uid">Performance-focused software with clean design.</p>
-  </div>
-</section>
-
-<section class="section fade">
-  <div class="center">
-    <h1 data-i18n="community">Growing with the community</h1>
-    <p data-i18n="communityd">Built with real user feedback.</p>
-  </div>
-</section>
-
-<div class="footer fade">
-© 2025 Rise Production. All Rights Reserved.
+<!-- 푸터 -->
+<div class="footer">
+  © 2026 Rise Productions. All rights reserved.
 </div>
-
-<script>
-const T={
-en:{
-header:"Rise Productions:<br>We code useful software for streamers and gamers.<br>Check our projects now.",
-b1:"Explore Projects",b2:"Learn More",
-f1t:"Powerful features",f1d:"Practical tools for streamers and gamers, including FPS optimization.",
-f2t:"Exclusive features",f2d:"Stable, secure and fairly designed systems.",
-f3t:"Any work environment",f3d:"Compatible with Windows, macOS and Linux.",
-ui:"Breakthrough user interfaces",uid:"Performance-focused software with clean design.",
-community:"Growing with the community",communityd:"Built with real user feedback."
-},
-jp:{
-header:"Rise Production：<br>配信者とゲーマーのための実用的なソフトウェアを開発しています。",
-b1:"プロジェクトを見る",b2:"詳細を見る",
-f1t:"強力な機能",f1d:"FPS最適化など実用的なツール。",
-f2t:"専用機能",f2d:"安定性と安全性を重視。",
-f3t:"あらゆる環境",f3d:"Windows・macOS・Linux対応。",
-ui:"革新的なUI",uid:"性能とデザインを両立。",
-community:"コミュニティと共に成長",communityd:"ユーザーの声を反映。"
-}
-};
-
-function setLang(l){
-  history.replaceState(null,"","?lang="+l);
-  document.querySelectorAll("[data-i18n]").forEach(e=>{
-    e.innerHTML=T[l][e.dataset.i18n];
-  });
-}
-
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add("show");
-  });
-},{threshold:.18});
-document.querySelectorAll(".fade").forEach(el=>io.observe(el));
-
-const p=new URLSearchParams(location.search);
-setLang(p.get("lang")||"en");
-</script>
 
 </body>
 </html>
